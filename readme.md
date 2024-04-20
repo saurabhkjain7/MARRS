@@ -1,7 +1,5 @@
-#MARRS
-Code release for our paper "MARRS: Modern Backbones Assisted Co-Training for Rapid and Robust Semi-Supervised Domain Adaptation'' accepted by CVPRW 2023.
-
-[Paper](https://openaccess.thecvf.com/content/CVPR2023W/ECV/html/Jain_MARRS_Modern_Backbones_Assisted_Co-Training_for_Rapid_and_Robust_Semi-Supervised_CVPRW_2023_paper.html) 
+# MARRS
+Code release for our paper ["MARRS: Modern Backbones Assisted Co-Training for Rapid and Robust Semi-Supervised Domain Adaptation''](https://openaccess.thecvf.com/content/CVPR2023W/ECV/html/Jain_MARRS_Modern_Backbones_Assisted_Co-Training_for_Rapid_and_Robust_Semi-Supervised_CVPRW_2023_paper.html)  accepted by CVPRW 2023.
 
 ## Requirements
 Python 3.8.10, Pytorch 1.9.0, Torch Vision 0.10.0. Use the provided requirements.txt file to create virtual environment.
@@ -30,9 +28,9 @@ Prepare DomaiNet dataset like this in images directory.
 
 Prepare Office-31 dataset like this in images directory.
 ```
-./images/dnet/amazon
-./images/dnet/dslr
-./images/dnet/webcam
+./images/office/amazon
+./images/office/dslr
+./images/office/webcam
 ```
 
 ## Stage-1: Feature extraction stage
@@ -53,6 +51,12 @@ Ex. 3-shot domain adaptation on the OfficeHome dataset.
 sh scripts/train.sh $gpu-id 3 office_home 
 ```
 
+Ex. 1-shot domain adaptation on the Office-31 dataset.
+
+```
+sh scripts/train.sh $gpu-id 1 office 
+```
+
 ## Knowledge distillation 
 
 Use the `train_student.sh` script to train a small network using base classifiers trained from second stage.
@@ -63,8 +67,14 @@ Ex. 3-shot domain adaptation on the OfficeHome dataset.
 sh scripts/train_student.sh $gpu-id 3 office_home 
 ```
 
+Ex. 1-shot domain adaptation on the DomainNet dataset.
+
+```
+sh scripts/train_student.sh $gpu-id 1 multi
+```
+
 ## Reference codes
-Part of our codes are taken from the following links:
+Part of our codes are taken from the following Github links:
 1. MME: https://github.com/VisionLearningGroup/SSDA_MME
 2. PACE: https://github.com/Chris210634/PACE-Domain-Adaptation/tree/main
 
