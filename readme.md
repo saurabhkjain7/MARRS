@@ -8,7 +8,7 @@ Python 3.8.10, Pytorch 1.9.0, Torch Vision 0.10.0. Use the provided requirements
 [Office Dataset](https://drive.google.com/file/d/0B4IapRTv9pJ1WGZVd1VDMmhwdlE/view?pli=1&resourcekey=0-gNMHVtZfRAyO_t2_WrOunA),
 [OfficeHome Dataset](http://hemanthdv.org/OfficeHome-Dataset/), [DomainNet dataset](http://ai.bu.edu/M3SDA/)
 
-**Note**: For DomainNet dataset download the original version not cleaned version
+**Note**: For DomainNet dataset download the original version not cleaned version.
 
 Prepare OfficeHome dataset like this in images directory.
 ```
@@ -18,7 +18,7 @@ Prepare OfficeHome dataset like this in images directory.
 ./images/office_home/Art
 ```
 
-Prepare DomaiNet dataset like this in images directory.
+Prepare DomainNet dataset like this in images directory.
 ```
 ./images/dnet/real
 ./images/dnet/painting
@@ -35,7 +35,7 @@ Prepare Office-31 dataset like this in images directory.
 
 ## Stage-1: Feature extraction stage
 
-Use the `features_extract.sh` script to extract and store features using modern backbones in the feature_weights folder.
+Use the `features_extract.sh` script to extract and store features using modern backbones in the `feature_weights` folder.
 
 ```
 sh scripts/features_extract.sh $gpu-id 
@@ -59,7 +59,7 @@ sh scripts/train.sh $gpu-id 1 office
 
 ## Knowledge distillation 
 
-Use the `train_student.sh` script to train a small network using base classifiers trained from second stage.
+Use the `train_student.sh` script to train a small network using base classifiers trained from the second stage.
 
 Ex. 3-shot domain adaptation on the OfficeHome dataset.
 
