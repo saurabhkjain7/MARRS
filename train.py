@@ -71,6 +71,10 @@ parser.add_argument('--lr',
                     type=float, 
                     default=30, 
                     help='learning rate')
+parser.add_argument('--lr_kd', 
+                    type=float, 
+                    default=0.01, 
+                    help='learning rate in student model training')
 parser.add_argument('--multi', 
                     type=float, 
                     default=0.1, 
@@ -291,7 +295,7 @@ def train_initial(inc, x_s, x_t, y_s, y_t, num_classes, device='cuda'):
 
 #####################  Training algorithm of student model  #####################  
 def train_student(source_loader, target_loader, target_loader_unl, target_loader_val, target_loader_test,
-          net_G, params, source_domain, target_domain,D_C,D_S,wandb=None):
+          net_G, params, source_domain, target_domain,D_C,D_S):
 
     ### Defining variables to hold data 
     im_data_s = torch.FloatTensor(1)
@@ -338,7 +342,7 @@ def train_student(source_loader, target_loader, target_loader_unl, target_loader
     for step in range(args.distill_steps):
 
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step,
-                                       init_lr=args.lr)
+                                       init_lr=args.lr_kd)
         lr = optimizer_g.param_groups[0]['lr']
 
         try:
